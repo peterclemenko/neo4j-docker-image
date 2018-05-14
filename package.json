@@ -1,7 +1,7 @@
 {
-  "name": "navrie-neo4j",
+  "name": "graphqlmerge-neo4j",
   "version": "1.0.0",
-  "description": "boop",
+  "description": "merges graphql schemas for neo4j",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "merge-graphql-schemas": "^1.5.1",
     "neo4j-graphql-cli": "0.0.11"
   }
 }

@@ -1,11 +1,13 @@
-FROM openjdk:8-jre-alpine
-
-RUN apk add --no-cache --quiet bash wget curl
+FROM node:9-stretch
 
 ENV NEO4J_SHA256=8a2a74f1270944d9b72f2af2c15cb350718e697af6e3800e67cb32a5d1605f6e \
     NEO4J_TARBALL=neo4j-community-3.3.2-unix.tar.gz \
     NEO4J_EDITION=community
 ARG NEO4J_URI=http://dist.neo4j.org/neo4j-community-3.3.2-unix.tar.gz
+
+RUN add-apt-repository ppa:openjdk-r/ppa
+RUN apt-get update
+RUN apt-get install openjdk-8-jdk bash wget curl
 
 COPY ./local-package/* /tmp/
 
