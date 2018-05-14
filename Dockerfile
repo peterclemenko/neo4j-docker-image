@@ -5,9 +5,9 @@ ENV NEO4J_SHA256=8a2a74f1270944d9b72f2af2c15cb350718e697af6e3800e67cb32a5d1605f6
     NEO4J_EDITION=community
 ARG NEO4J_URI=http://dist.neo4j.org/neo4j-community-3.3.2-unix.tar.gz
 
-RUN add-apt-repository ppa:openjdk-r/ppa
+RUN add-apt-repository ppa:openjdk-r/ppa -y
 RUN apt-get update
-RUN apt-get install openjdk-8-jdk bash wget curl
+RUN apt-get install openjdk-8-jdk bash wget curl -y
 
 RUN curl --fail --silent --show-error --location --remote-name ${NEO4J_URI} \
     && echo "${NEO4J_SHA256}  ${NEO4J_TARBALL}" | sha256sum -csw - \
