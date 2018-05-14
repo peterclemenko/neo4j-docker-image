@@ -1,0 +1,17 @@
+{
+  "schemaPath":"personSchema.graphql",
+  "extensions":
+    {
+      "endpoints":
+      {
+        "dev":
+          {
+            "url": "localhost:7474/graphql/",
+            "headers":
+            {
+              "Authorization":"Basic ${env:NEO4J_GRAPHQL_TOKEN}"
+            }
+          }
+      }
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "navrie-neo4j",
+  "version": "1.0.0",
+  "description": "boop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "neo4j-graphql-cli": "0.0.11"
+  }
+}

@@ -1,0 +1,31 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - source version.sh
+  - echo $VERSION
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  - docker build -f latest/Dockerfile -t nodered/node-red-docker .
+  - docker build -f slim/Dockerfile -t nodered/node-red-docker:slim .
+  - docker build -f rpi/Dockerfile -t nodered/node-red-docker:rpi .
+  - docker tag nodered/node-red-docker nodered/node-red-docker:$VERSION
+  - docker tag nodered/node-red-docker:slim nodered/node-red-docker:$VERSION-slim
+  - docker tag nodered/node-red-docker:rpi nodered/node-red-docker:$VERSION-rpi
+
+script:
+  - docker run -d nodered/node-red-docker:latest
+  - docker ps | grep latest
+  - docker run -d nodered/node-red-docker:slim
+  - docker ps | grep slim
+  - docker run -d nodered/node-red-docker:rpi
+  - docker ps | grep rpi
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    docker push nodered/node-red-docker;
+    fi
