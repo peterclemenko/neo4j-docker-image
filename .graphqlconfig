@@ -1,5 +1,5 @@
 {
-  "schemaPath":"personSchema.graphql",
+  "schemaPath":"schema.graphql",
   "extensions":
     {
       "endpoints":
