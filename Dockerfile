@@ -39,14 +39,12 @@ RUN curl --fail --silent --show-error --location -o /var/lib/neo4j/plugins/${APO
 
 WORKDIR /var/lib/neo4j
 
+
 VOLUME /data
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 EXPOSE 7474 7473 7687
-
-
-#neo4j-graphql myschema.graphql
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["neo4j"]
