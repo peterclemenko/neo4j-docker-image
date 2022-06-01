@@ -1,4 +1,4 @@
-FROM node:stretch
+FROM node:17.9.0-stretch
 
 ENV NEO4J_SHA256=b598edeb3401e5ec40fb7bc3370307addfcaa21565f731016c9c7f8e70af659a \
     NEO4J_TARBALL=neo4j-community-4.1.0-unix.tar.gz \
